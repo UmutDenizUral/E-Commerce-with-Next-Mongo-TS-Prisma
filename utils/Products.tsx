@@ -46,7 +46,7 @@ export const products = [
     {
         "id": 3,
         "name": "Ürün 3",
-        "description": "Bu, Ürün 3'ün açıklamasıdır.",
+        "description": "Bu, Ürün 3'ün açıklamasıdır. lorem*300 Bu, Ürün 3'ün açıklamasıdır. lorem*300Bu, Ürün 3'ün açıklamasıdır. lorem*300Bu, Ürün 3'ün açıklamasıdır. lorem*300Bu, Ürün 3'ün açıklamasıdır. lorem*300Bu, Ürün 3'ün açıklamasıdır. lorem*300",
         "price": 49.99,
         "brand": "Marka C",
         "category": "Ev & Yaşam",
@@ -134,7 +134,7 @@ export const products = [
     {
         "id": 7,
         "name": "Ürün 7",
-        "description": "Bu, Ürün 7'nin açıklamasıdır.",
+        "description": "Bu, Ürün 7'nin açıklamasıdır. Bu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdır",
         "price": 24.99,
         "brand": "Marka G",
         "category": "Spor Malzemeleri",
@@ -156,7 +156,7 @@ export const products = [
     {
         "id": 8,
         "name": "Ürün 8",
-        "description": "Bu, Ürün 8'in açıklamasıdır.",
+        "description": "Bu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdırBu, Ürün 8'in açıklamasıdır.",
         "price": 89.99,
         "brand": "Marka H",
         "category": "Mutfak Gereçleri",
@@ -169,7 +169,7 @@ export const products = [
     {
         "id": 9,
         "name": "Ürün 9",
-        "description": "Bu, Ürün 9'un açıklamasıdır.",
+        "description": "Bu, Ürün 9'un açıklamasıdır. Bu, Ürün 9'un açıklamasıdır.Bu, Ürün 9'un açıklamasıdır.",
         "price": 59.99,
         "brand": "Marka I",
         "category": "Bahçe Gereçleri",

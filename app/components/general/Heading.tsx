@@ -13,7 +13,7 @@ interface HeadingProps {
 // ({ center, text }): Bu kısım, props nesnesinden center ve text özelliklerini çıkartır (destructuring).
 const Heading: React.FC<HeadingProps> = ({ center, text }) => {
     return (
-        <div className={`text-slate-500 my-3 md:my-10 px-3 ${center ? 'text-center': 'text-start' }`}>
+        <div className={`text-slate-500 ml-2 text-xl my-3 md:my-10 px-3 ${center ? 'text-center': 'text-start' }`}>
                 {text}
         </div>
     )
