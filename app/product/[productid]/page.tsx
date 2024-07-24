@@ -3,7 +3,7 @@ import { products } from "@/utils/Products"
 import React from "react"
 
 type DetailProps = {
-    productid?: string
+    productid?: string|number
 }
 const Detail = ({ params }: { params: DetailProps }) => {
     const { productid } = params
