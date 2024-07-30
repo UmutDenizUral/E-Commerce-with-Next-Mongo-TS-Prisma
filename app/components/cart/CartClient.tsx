@@ -3,14 +3,16 @@ import useCart from "@/hooks/useCart"
 import PageContainer from "../containers/PageContainer"
 import Image from "next/image"
 import Button from "../general/Button"
+import Counter from "../general/Counter"
 
 const CartClient = () => {
-    const { cartProducts } = useCart()
+    const { cartProducts, removeFromCart, removeCart,addToBasketIncrease,addToBasketDecrease     } = useCart()
     console.log(cartProducts)
     if (!cartProducts || cartProducts.length == 0) {
 
         return <div>Sepetinizde ürün bulunmamaktadır</div>
     }
+    let cartProductsTotal = cartProducts.reduce((acc: any, item: CardProductProps) => acc + item.quantity * item.price, 0)
     return (
         <div className="my-3 md:my-10">
             <PageContainer>
@@ -35,14 +37,18 @@ const CartClient = () => {
                                         alt="yok" />
                                 </div>
                                 <div className="w-1/5">{cart.name}</div>
-                                <div className="w-1/5">{cart.quantity}</div>
+                                <div className="w-1/5 flex justify-center"><Counter cardProduct={cart} increaseFunc={()=>addToBasketIncrease(cart)} decreaseFunc={()=>addToBasketDecrease(cart)}/></div>
                                 <div className="w-1/5 text-orange-600 text-lg">{cart.price}TL</div>
                                 <div className="w-1/5 ">
-                                <Button small text="Ürün sil" onClick={()=>{}}/>
+                                    <Button small text="Ürün sil" onClick={() => removeFromCart(cart)} />
                                 </div>
                             </div>
                         )
                     }
+                </div>
+                <div className="flex items-center justify-between my-5 py-5 border-t">
+                    <button onClick={() => removeCart()} className="w-1/5 underline text-sm">Sepet Sİl</button>
+                    <div className="text-lg md:text-2xl text-orange-600 font-bold">{cartProductsTotal}TL</div>
                 </div>
             </PageContainer>
         </div>
