@@ -6,8 +6,13 @@ import Input from "../general/Input"
 import Button from "../general/Button"
 import { FaGoogle } from "react-icons/fa"
 import Link from "next/link"
+import axios from "axios"
+import toast from "react-hot-toast"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 const RegisterClient = () => {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
@@ -15,10 +20,25 @@ const RegisterClient = () => {
         formState: { errors },
     } = useForm<FieldValues>()
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        console.log(data)
+        axios.post('api/register',data).then(()=>{
+            toast.success('kullanıcı oluşturuldu')
+            signIn('credentials',{
+                email:data.email,
+                password:data.password,
+                redirect:false
+            }).then((callback)=>{
+                if(callback?.ok){
+                    router.push('/')
+                    router.refresh()
+                    toast.success('Login işlemi başarılı')
+                }
+                if(callback?.error){
+                    toast.error(callback.error)
+                }
+            })
+        })
     }
     return (
-
         <AuthContainer>
             <div className="w-full md:w-[500px] p-3 shadow-lg rounded-md">
                 <Heading text="Register" center />
@@ -27,13 +47,10 @@ const RegisterClient = () => {
                 <Input placeholder="Parola" type="password" id="password" register={register} errors={errors} required />
                 <Button text="Kayıt Ol" onClick={handleSubmit(onSubmit)} />
                 <div className="text-center my-2 text-sm text-red-400">Hesabın varsa <Link className="underline" href='/login'>buraya tıkla</Link></div>
-
                 <div className="text-center my-2 text-lg font-bold">OR</div>
-                <Button text="Google ile üye ol" icon={FaGoogle} outline onClick={() => []} />
-
+                <Button text="Google ile üye ol" icon={FaGoogle} outline onClick={() => {}} />
             </div>
         </AuthContainer>
-
     )
 }
 

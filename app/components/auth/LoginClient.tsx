@@ -6,16 +6,34 @@ import Input from "../general/Input"
 import Button from "../general/Button"
 import { FaGoogle } from "react-icons/fa"
 import Link from "next/link"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 const LoginClient = () => {
+    const router = useRouter()
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
     } = useForm<FieldValues>()
-    const onSubmit: SubmitHandler<FieldValues> = (data) =>{
-        console.log(data)
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        signIn('credentials', {
+            ...data,
+            redirect: false
+        }).then((callback)=>{
+            console.log(callback)
+            if(callback?.ok){
+                router.push('/cart')
+                router.refresh()
+                toast.success('Login işlemi başarılı')
+
+            }
+            if(callback?.error){
+                toast.error(callback.error)
+            }
+        })
     }
     return (
 
@@ -27,7 +45,7 @@ const LoginClient = () => {
                 <Button text="Giriş Yap" onClick={handleSubmit(onSubmit)} />
                 <div className="text-center my-2 text-sm text-red-400">Daha önce Kayıt olmadıysa <Link className="underline" href='/register'>buraya tıkla</Link></div>
                 <div className="text-center my-2 text-lg font-bold">OR</div>
-                <Button text="Google ile Giriş Yap" icon={FaGoogle} outline onClick={() => []} />
+                <Button text="Google ile Giriş Yap" icon={FaGoogle} outline onClick={() => {}} />
 
             </div>
         </AuthContainer>
