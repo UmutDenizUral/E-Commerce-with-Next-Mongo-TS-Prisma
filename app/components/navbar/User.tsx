@@ -24,9 +24,7 @@ const User:React.FC<UserProps> = ({currentUser}) => {
         }else{
             router.push("/login")
         }
-       
     }
-    
   return (
     <div  className="hidden md:flex relative">
         <div onClick={() => setOpenMenu(!openMenu)} className="flex items-center gap-1 cursor-pointer">

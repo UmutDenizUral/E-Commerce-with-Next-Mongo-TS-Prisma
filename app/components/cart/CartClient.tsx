@@ -4,9 +4,10 @@ import PageContainer from "../containers/PageContainer"
 import Image from "next/image"
 import Button from "../general/Button"
 import Counter from "../general/Counter"
+import { CardProductProps } from "../detail/DetailClient"
 
 const CartClient = () => {
-    const { cartProducts, removeFromCart, removeCart,addToBasketIncrease,addToBasketDecrease     } = useCart()
+    const { cartProducts, removeFromCart, removeCart, addToBasketIncrease, addToBasketDecrease } = useCart()
     console.log(cartProducts)
     if (!cartProducts || cartProducts.length == 0) {
 
@@ -22,12 +23,10 @@ const CartClient = () => {
                     <div className="w-1/5">Ürün Miktarı</div>
                     <div className="w-1/5">Ürün Fiyatı</div>
                     <div className="w-1/5"></div>
-
                 </div>
                 <div>
                     {
                         cartProducts.map(cart =>
-
                             <div className="flex text-center items-center justify-between my-5" key={cart.id}>
                                 <div className="w-1/5 flex items-center justify-center">
                                     <Image
@@ -37,7 +36,7 @@ const CartClient = () => {
                                         alt="yok" />
                                 </div>
                                 <div className="w-1/5">{cart.name}</div>
-                                <div className="w-1/5 flex justify-center"><Counter cardProduct={cart} increaseFunc={()=>addToBasketIncrease(cart)} decreaseFunc={()=>addToBasketDecrease(cart)}/></div>
+                                <div className="w-1/5 flex justify-center"><Counter cardProduct={cart} increaseFunc={() => addToBasketIncrease(cart)} decreaseFunc={() => addToBasketDecrease(cart)} /></div>
                                 <div className="w-1/5 text-orange-600 text-lg">{cart.price}TL</div>
                                 <div className="w-1/5 ">
                                     <Button small text="Ürün sil" onClick={() => removeFromCart(cart)} />
@@ -54,5 +53,4 @@ const CartClient = () => {
         </div>
     )
 }
-
 export default CartClient

@@ -1,6 +1,8 @@
 /*
 Bakılacaklar:
 useCart detaylı incele
+createForm detaylı inceler
+...nextapi detaylı incele
 
 Notlar:
 app klasörü altında oluşturulan klasör içinde page.tsx oluşturulursa sayfalama işleme yapılır.
@@ -22,7 +24,8 @@ hashlemek:??
 JWT(JSON Web Token):web uygulamalarında kimlik doğrulama ve yetkilendirme işlemleri için kullanılan bir standarttır. JWT, sunucu ile istemci arasında güvenli bir şekilde veri alışverişi yapmak için kullanılır. Özellikle, kimlik doğrulama ve kullanıcı oturum yönetimi gibi senaryolar için oldukça popülerdir  
 
 
-
+bugı düzelt  user.tsx de bugı düzelt lougt yapınca cart sayfasına yölendiriyor
+google auth düzelt
 
 
 */

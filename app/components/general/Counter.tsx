@@ -4,7 +4,7 @@ interface CounterProps {
   cardProduct: CardProductProps,
   increaseFunc: () => void
   decreaseFunc: () => void
-}
+} 
 
 const Counter: React.FC<CounterProps> = ({ cardProduct, increaseFunc, decreaseFunc }) => {
  const buttonStyle = 'w-8 h-8 border flex items-center justify-center text-xl rounded-full cursor-pointer'

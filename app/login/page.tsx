@@ -7,7 +7,7 @@ const Login = async() => {
   const currentUser = await getCurrentUser()
   return (
   <div>
-    <LoginClient/>
+    <LoginClient currentUser={currentUser}/>
 
     
   </div>

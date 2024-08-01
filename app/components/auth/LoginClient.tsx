@@ -9,8 +9,13 @@ import Link from "next/link"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import { User } from "next-auth"
+import { useEffect } from "react"
+interface LoginClientProps {
+    currentUser: User | null | undefined
+}
 
-const LoginClient = () => {
+const LoginClient: React.FC<LoginClientProps> = ({ currentUser }) => {
     const router = useRouter()
     const {
         register,
@@ -22,19 +27,26 @@ const LoginClient = () => {
         signIn('credentials', {
             ...data,
             redirect: false
-        }).then((callback)=>{
+        }).then((callback) => {
             console.log(callback)
-            if(callback?.ok){
+            if (callback?.ok) {
                 router.push('/cart')
                 router.refresh()
                 toast.success('Login işlemi başarılı')
 
             }
-            if(callback?.error){
+            if (callback?.error) {
                 toast.error(callback.error)
             }
         })
     }
+    useEffect(() => {
+        if (currentUser) {
+            router.push('/cart')
+            router.refresh()
+        }
+
+    }, [])
     return (
 
         <AuthContainer>
@@ -45,7 +57,7 @@ const LoginClient = () => {
                 <Button text="Giriş Yap" onClick={handleSubmit(onSubmit)} />
                 <div className="text-center my-2 text-sm text-red-400">Daha önce Kayıt olmadıysa <Link className="underline" href='/register'>buraya tıkla</Link></div>
                 <div className="text-center my-2 text-lg font-bold">OR</div>
-                <Button text="Google ile Giriş Yap" icon={FaGoogle} outline onClick={() => {}} />
+                <Button text="Google ile Giriş Yap" icon={FaGoogle} outline onClick={()=>signIn('google')} />
 
             </div>
         </AuthContainer>
