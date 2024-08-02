@@ -47,7 +47,6 @@ const CreateForm = () => {
       },
    ]
 
-
    const {
       register,
       handleSubmit,
@@ -75,9 +74,8 @@ const CreateForm = () => {
          toast.success('Yükleme işlemi basarılı !!!')
          try {
             const storage = getStorage(firebaseApp);
-            const storageRef = ref(storage, 'images/shop.jpg');
+            const storageRef = ref(storage, `images/${data.name}_${data.brand}.jpg`);
    
-
             const uploadTask = uploadBytesResumable(storageRef, img);
             await new Promise<void>((resolve, reject) => {
                uploadTask.on('state_changed',
@@ -109,8 +107,6 @@ const CreateForm = () => {
                   }
                );
             })
-
-
          } catch (error) {
             console.log(error)
          }

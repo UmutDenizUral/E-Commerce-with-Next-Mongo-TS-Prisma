@@ -3,6 +3,7 @@ Bakılacaklar:
 useCart detaylı incele
 createForm detaylı inceler
 ...nextapi detaylı incele
+getProducts detaylı incele
 
 Notlar:
 app klasörü altında oluşturulan klasör içinde page.tsx oluşturulursa sayfalama işleme yapılır.

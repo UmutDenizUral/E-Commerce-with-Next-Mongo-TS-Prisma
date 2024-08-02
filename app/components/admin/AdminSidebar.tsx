@@ -11,26 +11,31 @@ const AdminSidebar = () => {
     const adminPanel = [
         {
             name: 'Özetler',
-            icon:MdDashboard,
+            icon: MdDashboard,
             url: '/admin',
         }, {
             name: 'Ürün Oluştur',
-            icon:MdOutlineCreate,
+            icon: MdOutlineCreate,
             url: '/admin/create',
         }, {
+            name: 'Ürünleri Yönet',
+            icon: MdBorderOuter,
+            url: '/admin/manage',
+        },
+        {
             name: 'Sipraişlerim',
-            icon:MdBorderOuter,
+            icon: MdBorderOuter,
             url: '/admin/order',
         }
 
     ]
     return (
         <div className="w-1/6 border-r h-screen">
-     
-                    {adminPanel.map((admin,i)=>(
-                        <AdminSidebarItem key={i} selected={pathName== admin.url} url={admin.url} icon={admin.icon} name={admin.name} />
 
-                    ))}
+            {adminPanel.map((admin, i) => (
+                <AdminSidebarItem key={i} selected={pathName == admin.url} url={admin.url} icon={admin.icon} name={admin.name} />
+
+            ))}
         </div>
     )
 }
