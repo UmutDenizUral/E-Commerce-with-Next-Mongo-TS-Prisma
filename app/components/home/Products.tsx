@@ -1,9 +1,13 @@
-import { products } from "@/utils/Products"
+import { Product } from '@prisma/client'
 import Heading from "../general/Heading"
 import ProductCard from "./ProductCard"
 
 
-const Products = () => {
+interface ProductsProps{
+    products: Product[]
+}
+const Products:React.FC<ProductsProps> = ({products}) => {
+    
     return (
         <div className="">
             <Heading text="Tüm Ürünler" />

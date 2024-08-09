@@ -19,6 +19,7 @@ export type CardProductProps = {
 }
 
 const DetailClient = ({ product }: { product: any }) => {
+    console.log(product)
     const { productCartQty, addToBasket, cartProducts } = useCart()
     const [displayButton, setDisplayButton] = useState(false)
     const [cardProduct, setCardProduct] = useState<CardProductProps>({
@@ -31,6 +32,7 @@ const DetailClient = ({ product }: { product: any }) => {
         inStock: product.inStock
     })
 
+    console.log(cartProducts, 'cartProducts geldi!')
     useEffect(() => {
         setDisplayButton(false)
         let controlDisplay: any = cartProducts?.findIndex(cart => cart.id == product.id)

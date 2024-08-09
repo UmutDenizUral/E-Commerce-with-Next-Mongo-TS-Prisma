@@ -1,5 +1,5 @@
 import prisma from '@/libs/prismadb'
-import { products } from './../../utils/Products';
+
 interface IParams {
     productId?: string
 }
@@ -23,5 +23,6 @@ export default async function getProductsId(params:IParams) {
     if(!product){
         return null
     }
+    console.log('getProduct çalıştı!!!!!! :',product)
     return product
 }

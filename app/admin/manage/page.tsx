@@ -6,7 +6,7 @@ import WarningText from '@/app/components/WarningText'
 import React from 'react'
 
 const Manage = async () => {
-    const products = await getProducts({category:null})
+    const products = await getProducts({category:null,search:'insan'})
     const currentUser = await getCurrentUser()
     if (!currentUser || currentUser.role !== 'ADMIN') {
         return <WarningText text="Buraya Giremezsin" />

@@ -7,9 +7,9 @@ import toast from "react-hot-toast";
 interface CartContextProps {
     productCartQty: number
     cartProducts: CardProductProps[] | null
-    addToBasket: (product: CardProductProps) => void 
-    addToBasketIncrease: (product: CardProductProps) => void 
-    addToBasketDecrease: (product: CardProductProps) => void 
+    addToBasket: (product: CardProductProps) => void
+    addToBasketIncrease: (product: CardProductProps) => void
+    addToBasketDecrease: (product: CardProductProps) => void
     removeFromCart: (product: CardProductProps) => void
     removeCart: () => void
 }
@@ -41,14 +41,12 @@ export const CartContextProvider = (props: Props) => {
             }
             setCartProducts(uptdatedcart)
             localStorage.setItem('cart', JSON.stringify(uptdatedcart))
-
         }
-
     }, [cartProducts])
     const addToBasketDecrease = useCallback((product: CardProductProps) => {
         let uptdatedcart
         if (product.quantity == 1) {
-            
+
             return toast.error('Daha azaltılmaz')
         }
         if (cartProducts) {
@@ -59,15 +57,12 @@ export const CartContextProvider = (props: Props) => {
             }
             setCartProducts(uptdatedcart)
             localStorage.setItem('cart', JSON.stringify(uptdatedcart))
-
         }
-
     }, [cartProducts])
     const removeCart = useCallback(() => {
         setCartProducts(null)
         toast.success('Tüm ürünler sepetten çıkarıldı!')
         localStorage.setItem('cart', JSON.stringify(null))
-
     }, [])
 
     const addToBasket = useCallback((product: CardProductProps) => {
@@ -115,7 +110,6 @@ const useCart = () => {
         throw new Error('bir hata durumu mevcut')
     }
     return context
-
 }
 
 export default useCart

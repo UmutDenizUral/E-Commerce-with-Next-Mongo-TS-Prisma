@@ -6,7 +6,7 @@ import { deleteObject, getStorage, ref } from 'firebase/storage';
 import firebaseApp from '@/libs/firebase';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface ManageClientProps {
     products: Product[]

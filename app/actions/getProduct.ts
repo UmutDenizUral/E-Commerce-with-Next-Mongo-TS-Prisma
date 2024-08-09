@@ -42,7 +42,7 @@ export default async function getProducts(params:IProductParams) {
                     }
                 }
             }
-        })
+        })          
         return products;
     } catch (error: any) {
         throw new Error(error)
